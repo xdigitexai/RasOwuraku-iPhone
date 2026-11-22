@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -380,6 +380,7 @@ footer b {color:white}
   .result-row {font-size:13px}
 }
 </style>
+  <link rel="stylesheet" href="theme.css">
 </head>
 
 <body>
@@ -523,9 +524,9 @@ footer b {color:white}
   <div class="formula">
     <h3>How Your Payment Is Calculated</h3>
 
-    <p id="formulaPrice">2,300 × 50 ÷ 100 = 1,150</p>
-    <p id="formulaBalance">2,300 − 1,150 = 1,150</p>
-    <p id="formulaWeekly">1,150 × 1.5 ÷ 12 = 143.75</p>
+    <p id="formulaPrice">2,300 Ã— 50 Ã· 100 = 1,150</p>
+    <p id="formulaBalance">2,300 âˆ’ 1,150 = 1,150</p>
+    <p id="formulaWeekly">1,150 Ã— 1.5 Ã· 12 = 143.75</p>
 
     <p style="color:#f6d987;font-weight:bold">
       Your weekly payment is calculated automatically.
@@ -597,7 +598,7 @@ footer b {color:white}
 
     Your iPhone Partner for Life.<br>
 
-    <small>© <span id="year"></span> RasOwuraku iPhones. All rights reserved.</small>
+    <small>Â© <span id="year"></span> RasOwuraku iPhones. All rights reserved.</small>
   </div>
 </footer>
 
@@ -671,17 +672,17 @@ function calculate() {
 
   // Formula display
   document.getElementById("formulaPrice").textContent =
-    price.toLocaleString("en-KE") + " × " +
-    percentage + " ÷ 100 = " +
+    price.toLocaleString("en-KE") + " Ã— " +
+    percentage + " Ã· 100 = " +
     downPayment.toFixed(2);
 
   document.getElementById("formulaBalance").textContent =
-    price.toFixed(2) + " − " +
+    price.toFixed(2) + " âˆ’ " +
     downPayment.toFixed(2) + " = " +
     balance.toFixed(2);
 
   document.getElementById("formulaWeekly").textContent =
-    balance.toFixed(2) + " × 1.5 ÷ " +
+    balance.toFixed(2) + " Ã— 1.5 Ã· " +
     duration + " = " +
     weeklyPayment.toFixed(2);
 

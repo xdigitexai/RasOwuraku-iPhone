@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -425,6 +425,7 @@ footer a {color:var(--gold);text-decoration:none}
   .login-box {padding:25px 18px}
 }
 </style>
+  <link rel="stylesheet" href="theme.css">
 </head>
 
 <body>
@@ -508,25 +509,25 @@ footer a {color:var(--gold);text-decoration:none}
   <div class="stats">
 
     <div class="stat">
-      <div class="icon">📱</div>
+      <div class="icon">ðŸ“±</div>
       <p>Total Products</p>
       <h2 id="totalProducts">0</h2>
     </div>
 
     <div class="stat">
-      <div class="icon">✅</div>
+      <div class="icon">âœ…</div>
       <p>Available Stock</p>
       <h2 id="availableProducts">0</h2>
     </div>
 
     <div class="stat">
-      <div class="icon">📩</div>
+      <div class="icon">ðŸ“©</div>
       <p>Customer Enquiries</p>
       <h2 id="totalEnquiries">0</h2>
     </div>
 
     <div class="stat">
-      <div class="icon">💰</div>
+      <div class="icon">ðŸ’°</div>
       <p>Total Stock Value</p>
       <h2 id="stockValue">KSh0</h2>
     </div>
@@ -941,7 +942,7 @@ function renderProducts() {
         ${
           p.image
           ? `<img class="product-img" src="${escapeHTML(p.image)}" alt="">`
-          : "📱"
+          : "ðŸ“±"
         }
       </td>
       <td>${escapeHTML(p.name)}</td>
