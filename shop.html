@@ -967,8 +967,9 @@ target="_blank" rel="noopener">WhatsApp</a>
 // RASOWURAKU IPHONES STORE
 // ====================================
 
-const XDIGITEX_API_KEY = "PASTE_YOUR_XDIGITEX_API_KEY_HERE";
-const XDIGITEX_API_BASE = "https://pay.xdigitex.com/api";
+// Payment requests go through server.mjs, which injects X-API-Key server-side.
+// The Xdigitex API does not allow direct browser requests (no CORS headers).
+const XDIGITEX_API_BASE = "/api";
 
 
 // ====================================
@@ -1440,8 +1441,17 @@ function resetPaymentStatus() {
 }
 
 async function payOnline(order) {
-    if (!XDIGITEX_API_KEY || XDIGITEX_API_KEY === "xdp_live_AnSoNLTkkmOXK7bR_efLb5Tb8yys6S-B") {
-        alert("M-Pesa is not configured yet. Please contact the store.");
+    // Confirm the proxy is running and has a key before starting a payment.
+    try {
+        const configResponse = await fetch("/api/config");
+        const config = await configResponse.json();
+        if (!config.configured) {
+            throw new Error("M-Pesa is not configured. Set XDP_API_KEY on the server or start with XDP_DEMO=1.");
+        }
+    } catch (error) {
+        setPaymentStatus("error", "Payment service offline",
+            "Open the store through node server.mjs. Opening the HTML file directly cannot reach the payment API.",
+            error.message, 100);
         return;
     }
 
@@ -1470,7 +1480,7 @@ async function payOnline(order) {
         setPaymentStatus("pending", "Sending payment request", "We are asking Safaricom to send an STK prompt to your phone.", "Order " + order.id, 5);
         const response = await fetch(XDIGITEX_API_BASE + "/payments/stkpush", {
             method: "POST",
-            headers: {"Content-Type":"application/json", "X-API-Key":XDIGITEX_API_KEY},
+            headers: {"Content-Type":"application/json"},
             body: JSON.stringify({
                 phoneNumber,
                 amount,
@@ -1500,8 +1510,7 @@ async function payOnline(order) {
 
             try {
                 const statusResponse = await fetch(
-                    XDIGITEX_API_BASE + "/payments/status/" + encodeURIComponent(result.checkoutRequestId),
-                    {headers: {"X-API-Key":XDIGITEX_API_KEY}}
+                    XDIGITEX_API_BASE + "/payments/status/" + encodeURIComponent(result.checkoutRequestId)
                 );
                 const statusResult = await statusResponse.json().catch(() => ({}));
                 if (!statusResponse.ok) {
@@ -1553,7 +1562,10 @@ async function payOnline(order) {
             100
         );
     } catch (error) {
-        setPaymentStatus("error", "Payment not confirmed", error.message || "M-Pesa could not be completed. Please contact the store.", "Order " + order.id, 100);
+        const detail = /fetch|network|gateway|failed to fetch/i.test(error.message)
+            ? "Cannot reach the payment service. Make sure the store is running through node server.mjs — the Xdigitex API blocks direct browser requests."
+            : (error.message || "M-Pesa could not be completed. Please contact the store.");
+        setPaymentStatus("error", "Payment not confirmed", detail, "Order " + order.id, 100);
     } finally {
         if (submitButton && document.body.contains(submitButton)) {
             submitButton.disabled = false;
