@@ -1531,7 +1531,12 @@ async function payOnline(order) {
                 }
 
                 if (status === "failed" || status === "cancelled") {
-                    setPaymentStatus("error", "Payment not completed", statusResult.message || "The M-Pesa request was " + status + ". You can try again or contact the store.", "Order " + order.id, 100);
+                    setPaymentStatus("error", "Payment not completed", statusResult.message || "The M-Pesa request was " + status + ". You can try again or contact the store.", "Order " + order.id + " • ID " + result.checkoutRequestId, 100);
+                    return;
+                }
+
+                if (status === "manual_review") {
+                    setPaymentStatus("error", "Payment under review", "Xdigitex has placed this transaction under review. No payment prompt will arrive for it. Contact the store and quote the checkout ID below — do not pay again.", "Order " + order.id + " • ID " + result.checkoutRequestId, 100);
                     return;
                 }
 
