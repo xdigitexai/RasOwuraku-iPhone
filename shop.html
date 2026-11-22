@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -701,7 +701,7 @@ RasOwuraku <span>iPhones</span>
 </nav>
 
 <button class="cart-button" onclick="openCart()">
-ðŸ›’ Cart <span class="cart-count" id="cartCount">0</span>
+🛒 Cart <span class="cart-count" id="cartCount">0</span>
 </button>
 
 </div>
@@ -728,13 +728,13 @@ phone or choose a flexible installment plan.
 </p>
 
 <div class="hero-actions">
-<a href="#products" class="btn btn-gold">Explore iPhones â†’</a>
+<a href="#products" class="btn btn-gold">Explore iPhones →</a>
 <a href="contact.html" class="btn btn-outline">Talk to Us</a>
 </div>
 </div>
 
 <div class="hero-visual">
-<div class="hero-phone">ðŸ“±</div>
+<div class="hero-phone">📱</div>
 <strong>PREMIUM. TRUSTED. CONNECTED.</strong>
 </div>
 
@@ -747,7 +747,7 @@ phone or choose a flexible installment plan.
 <section class="wrap benefits">
 
 <div class="benefit">
-<span class="benefit-icon">ðŸ“±</span>
+<span class="benefit-icon">📱</span>
 <div>
 <strong>Premium iPhones</strong>
 <small>Explore available models</small>
@@ -755,7 +755,7 @@ phone or choose a flexible installment plan.
 </div>
 
 <div class="benefit">
-<span class="benefit-icon">ðŸ”„</span>
+<span class="benefit-icon">🔄</span>
 <div>
 <strong>Buy & Swap</strong>
 <small>Upgrade your device</small>
@@ -763,7 +763,7 @@ phone or choose a flexible installment plan.
 </div>
 
 <div class="benefit">
-<span class="benefit-icon">ðŸšš</span>
+<span class="benefit-icon">🚚</span>
 <div>
 <strong>Delivery Available</strong>
 <small>Or collect from our store</small>
@@ -771,7 +771,7 @@ phone or choose a flexible installment plan.
 </div>
 
 <div class="benefit">
-<span class="benefit-icon">ðŸ’³</span>
+<span class="benefit-icon">💳</span>
 <div>
 <strong>Flexible Payment</strong>
 <small>Online or WhatsApp</small>
@@ -795,7 +795,7 @@ phone or choose a flexible installment plan.
 <div class="toolbar">
 
 <input class="field" id="searchInput"
-placeholder="ðŸ” Search iPhone model...">
+placeholder="🔍 Search iPhone model...">
 
 <select class="field" id="categoryFilter">
 <option value="">All Models</option>
@@ -838,8 +838,8 @@ placeholder="ðŸ” Search iPhone model...">
 <div class="modal">
 
 <div class="modal-head">
-<h2>ðŸ›’ Your Shopping Cart</h2>
-<button class="close" onclick="closeModal('cartOverlay')">Ã—</button>
+<h2>🛒 Your Shopping Cart</h2>
+<button class="close" onclick="closeModal('cartOverlay')">×</button>
 </div>
 
 <div id="cartItems"></div>
@@ -851,7 +851,7 @@ placeholder="ðŸ” Search iPhone model...">
 
 <button class="btn btn-gold" style="width:100%"
 onclick="openCheckout()">
-Proceed to Checkout â†’
+Proceed to Checkout →
 </button>
 
 </div>
@@ -865,7 +865,7 @@ Proceed to Checkout â†’
 
 <div class="modal-head">
 <h2>Secure Checkout</h2>
-<button class="close" onclick="closeModal('checkoutOverlay')">Ã—</button>
+<button class="close" onclick="closeModal('checkoutOverlay')">×</button>
 </div>
 
 <form id="checkoutForm">
@@ -890,7 +890,7 @@ Proceed to Checkout â†’
 <div class="full">
 <label>Delivery method</label>
 <div class="payment-choice">
-<label><input type="radio" name="delivery" value="Store Pickup" checked onchange="updateCheckout()"> Store pickup â€“ Nairobi, Kenya</label>
+<label><input type="radio" name="delivery" value="Store Pickup" checked onchange="updateCheckout()"> Store pickup – Nairobi, Kenya</label>
 </div>
 <div class="payment-choice">
 <label><input type="radio" name="delivery" value="Home Delivery" onchange="updateCheckout()"> Home delivery</label>
@@ -905,7 +905,7 @@ Proceed to Checkout â†’
 <div class="full">
 <label>Payment method</label>
 <div class="payment-choice">
-<label><input type="radio" name="payment" value="whatsapp" checked> WhatsApp â€“ arrange payment with us</label>
+<label><input type="radio" name="payment" value="whatsapp" checked> WhatsApp – arrange payment with us</label>
 </div>
 <div class="payment-choice">
 <label><input type="radio" name="payment" value="online"> M-Pesa STK Push</label>
@@ -929,7 +929,7 @@ Proceed to Checkout â†’
 </div>
 
 <button type="submit" class="btn btn-gold" style="width:100%">
-Place My Order â†’
+Place My Order →
 </button>
 
 </form>
@@ -1096,7 +1096,7 @@ function renderProducts() {
             <div class="product-image">
                 ${p.image
                     ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" loading="lazy">`
-                    : `<div class="phone-placeholder">ðŸ“±</div>`
+                    : `<div class="phone-placeholder">📱</div>`
                 }
 
                 ${p.badge ? `<span class="product-badge">${escapeHTML(p.badge)}</span>` : ""}
@@ -1106,12 +1106,12 @@ function renderProducts() {
 
                 <h3>${escapeHTML(p.name)}</h3>
 
-                <p>${escapeHTML(p.storage)} â€¢ ${escapeHTML(p.color || "Various colours")}</p>
+                <p>${escapeHTML(p.storage)} • ${escapeHTML(p.color || "Various colours")}</p>
 
                 <p>${escapeHTML(p.condition)}</p>
 
                 <div class="stock">
-                    ${p.stock > 0 ? "â— In stock ("+p.stock+")" : "â— Out of stock"}
+                    ${p.stock > 0 ? "● In stock ("+p.stock+")" : "● Out of stock"}
                 </div>
 
                 <div class="product-price">${money(p.price)}</div>
@@ -1212,10 +1212,10 @@ function renderCart() {
 
                 <div>
                     <strong>${escapeHTML(p.name)}</strong><br>
-                    <small>${escapeHTML(p.storage)} â€¢ ${escapeHTML(p.color)}</small>
+                    <small>${escapeHTML(p.storage)} • ${escapeHTML(p.color)}</small>
 
                     <div class="quantity">
-                        <button onclick="changeQuantity(${p.id},-1)">âˆ’</button>
+                        <button onclick="changeQuantity(${p.id},-1)">−</button>
                         ${item.quantity}
                         <button onclick="changeQuantity(${p.id},1)">+</button>
                     </div>
@@ -1473,7 +1473,7 @@ async function payOnline(order) {
     const submitButton = document.querySelector("#checkoutForm button[type=submit]");
     if (submitButton) {
         submitButton.disabled = true;
-        submitButton.textContent = "Starting M-Pesaâ€¦";
+        submitButton.textContent = "Starting M-Pesa…";
     }
     resetPaymentStatus();
 
@@ -1495,7 +1495,7 @@ async function payOnline(order) {
             throw new Error(result.message || result.error || "The payment prompt could not be started.");
         }
 
-        setPaymentStatus("pending", "Prompt sent to your phone", result.customerMessage || "Check your phone. Enter your M-Pesa PIN only if the amount and business details are correct.", "Order " + order.id + " â€¢ ID " + result.checkoutRequestId, 10);
+        setPaymentStatus("pending", "Prompt sent to your phone", result.customerMessage || "Check your phone. Enter your M-Pesa PIN only if the amount and business details are correct.", "Order " + order.id + " • ID " + result.checkoutRequestId, 10);
 
         const maxAttempts = 36;
         let lastConnectionIssue = "";
@@ -1503,9 +1503,9 @@ async function payOnline(order) {
             await new Promise(resolve => setTimeout(resolve, 5000));
             setPaymentStatus(
                 "pending",
-                "Checking payment statusâ€¦",
+                "Checking payment status…",
                 "Your payment is not confirmed yet. Approve the STK prompt on your phone, or wait for the next automatic check.",
-                "Check " + attempt + " of " + maxAttempts + " â€¢ Order " + order.id,
+                "Check " + attempt + " of " + maxAttempts + " • Order " + order.id,
                 10 + (attempt / maxAttempts) * 85
             );
 
@@ -1539,7 +1539,7 @@ async function payOnline(order) {
                     "pending",
                     status === "processing" ? "M-Pesa is processing" : "Waiting for payment approval",
                     "No payment confirmation has arrived yet. Please keep this page open and do not start another payment.",
-                    "Payment status: " + (status || "pending") + " â€¢ Check " + attempt + " of " + maxAttempts + " â€¢ ID " + result.checkoutRequestId,
+                    "Payment status: " + (status || "pending") + " • Check " + attempt + " of " + maxAttempts + " • ID " + result.checkoutRequestId,
                     10 + (attempt / maxAttempts) * 85
                 );
             } catch (statusError) {
@@ -1559,18 +1559,18 @@ async function payOnline(order) {
             "pending",
             "Payment still awaiting confirmation",
             "We have not received a final result. Do not pay again yet. Contact the store and quote this order reference so the payment can be checked.",
-            "Order " + order.id + " â€¢ ID " + result.checkoutRequestId + (lastConnectionIssue ? " â€¢ Last connection issue: " + lastConnectionIssue : ""),
+            "Order " + order.id + " • ID " + result.checkoutRequestId + (lastConnectionIssue ? " • Last connection issue: " + lastConnectionIssue : ""),
             100
         );
     } catch (error) {
         const detail = /fetch|network|gateway|failed to fetch/i.test(error.message)
-            ? "Cannot reach the payment service. Make sure the store is running through node server.mjs â€” the Xdigitex API blocks direct browser requests."
+            ? "Cannot reach the payment service. Make sure the store is running through node server.mjs — the Xdigitex API blocks direct browser requests."
             : (error.message || "M-Pesa could not be completed. Please contact the store.");
         setPaymentStatus("error", "Payment not confirmed", detail, "Order " + order.id, 100);
     } finally {
         if (submitButton && document.body.contains(submitButton)) {
             submitButton.disabled = false;
-            submitButton.textContent = "Place My Order â†’";
+            submitButton.textContent = "Place My Order →";
         }
     }
 }
