@@ -1494,7 +1494,7 @@ async function payOnline(order) {
             throw new Error(result.message || result.error || "The payment prompt could not be started.");
         }
 
-        setPaymentStatus("pending", "Prompt sent to your phone", result.customerMessage || "Check your phone. Enter your M-Pesa PIN only if the amount and business details are correct.", "Order " + order.id + " • Waiting for your approval", 10);
+        setPaymentStatus("pending", "Prompt sent to your phone", result.customerMessage || "Check your phone. Enter your M-Pesa PIN only if the amount and business details are correct.", "Order " + order.id + " • ID " + result.checkoutRequestId, 10);
 
         const maxAttempts = 36;
         let lastConnectionIssue = "";
@@ -1538,7 +1538,7 @@ async function payOnline(order) {
                     "pending",
                     status === "processing" ? "M-Pesa is processing" : "Waiting for payment approval",
                     "No payment confirmation has arrived yet. Please keep this page open and do not start another payment.",
-                    "Payment status: " + (status || "pending") + " • Check " + attempt + " of " + maxAttempts,
+                    "Payment status: " + (status || "pending") + " • Check " + attempt + " of " + maxAttempts + " • ID " + result.checkoutRequestId,
                     10 + (attempt / maxAttempts) * 85
                 );
             } catch (statusError) {
@@ -1558,7 +1558,7 @@ async function payOnline(order) {
             "pending",
             "Payment still awaiting confirmation",
             "We have not received a final result. Do not pay again yet. Contact the store and quote this order reference so the payment can be checked.",
-            "Order " + order.id + (lastConnectionIssue ? " • Last connection issue: " + lastConnectionIssue : ""),
+            "Order " + order.id + " • ID " + result.checkoutRequestId + (lastConnectionIssue ? " • Last connection issue: " + lastConnectionIssue : ""),
             100
         );
     } catch (error) {
