@@ -31,6 +31,25 @@ XDP_API_KEY=xdp_live_xxxxxxxx PORT=3000 node server.mjs
 
 Never put the key in `shop.html` or commit it to GitHub.
 
+### Settlement channel (important)
+
+An STK Push is only delivered if your Xdigitex settlement channel uses a real
+Safaricom Paybill shortcode or Till number that you own and that is registered
+for C2B/STK. A bank account number is **not** a Paybill shortcode. If the
+business number is wrong, Safaricom silently drops the prompt: the API still
+returns `responseCode: 0` and `status: pending`, but no prompt reaches the phone
+and no callback arrives.
+
+- In the Xdigitex dashboard, edit the settlement channel and set the business
+  number to the registered Paybill shortcode, or add a Till channel.
+- Confirm the subscription is active in the dashboard.
+- Run a **KES 1** test push before accepting real orders.
+
+Status `manual_review` means M-Pesa accepted the push but no callback arrived
+after reconciliation retries — no money has moved. While a payment is still
+`pending`, do not push the same amount to the same number again; a late callback
+could otherwise cause a double charge.
+
 ### Test without a phone
 
 ```bash
